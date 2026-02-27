@@ -1,56 +1,130 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Task  Dashboard
 
-## Getting Started
+A simple Task  Dashboard built using:
 
-This repo contains a simple **Task Management Dashboard** built with Next.js (App Router), TypeScript, Tailwind CSS and shadcn/ui. It demonstrates:
+- Next.js (App Router)
+- TypeScript
+- Tailwind CSS
+- shadcn/ui
+- LocalStorage (Mock Authentication & Data Persistence)
 
-- mock authentication (login flag in `localStorage`)
-- task CRUD (create/edit/delete/change status) with modal forms
-- filter, sort and search
-- **dark mode** toggle stored in `localStorage`
-- a tiny server component (`Header`) alongside client components
-- basic unit tests for task utilities using Jest
+# 🚀 Setup Steps
 
-To run the app locally, install dependencies then start the dev server:
+## 1️⃣ Clone the Repository
+git clone https://github.com/jerrin0256/task-dashboardd.git
+cd task-dashboardd
 
-```bash
+
+## 2️⃣ Install Dependencies
 npm install
+
+## 3️⃣ Run the Development Server
 npm run dev
-# or substitute yarn/pnpm if you prefer
-```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the login page. Any username works; once logged in you'll be taken to the dashboard.
+## 4️⃣ Open in Browser
+http://localhost:3000
 
-The dashboard persists tasks in your browser and will survive reloads.
+# Screenshots
+##  Login Page
+![Login](public/login.png)
 
-### Running tests
+##  Dashboard Page
+![Dashboard](public/dashboard.png)
 
-The repository includes a small Jest setup for unit testing the utility functions. Run:
+##  Dark Mode
+![Dark Mode](public/dark-mode.png)
 
-```bash
-npm run test
-```
-
-and you should see four simple assertions about status changes, filtering, search and sorting.
+##  Create / Edit Task
+![Create Task](public/create-task.png)
 
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+#  Design Decisions
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 1. Mock Authentication Using LocalStorage
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Since no backend was required, authentication is simulated using localStorage:
 
-## Learn More
+- On login → loggedIn flag is stored.
+- Dashboard checks login state.
+- Logout removes login state.
 
-To learn more about Next.js, take a look at the following resources:
+This keeps the implementation simple while demonstrating authentication flow.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 2. Task Data Stored in LocalStorage
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Tasks are stored in localStorage to:
 
-## Deploy on Vercel
+- Persist data after page refresh
+- Simulate real-world persistence
+- Avoid backend dependency
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 3. Separation of Concerns
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Task logic is separated into utility functions:
+changeStatus
+filterTasks
+sortTasks
+
+This improves:
+
+- Maintainability
+- Reusability
+- Testability
+- Cleaner UI components
+
+## 4. TypeScript for Strong Typing
+
+A strict Task interface is used:
+
+ts
+export interface Task {
+  id: number;
+  title: string;
+  description: string;
+  status: "Todo" | "In Progress" | "Completed";
+  dueDate: string;
+}
+Benefits:
+
+- No use of `any`
+- Clear data model
+- Improved scalability
+
+## 5. App Router Architecture
+
+layout.tsx → Server Component
+Interactive pages → Client Components (`"use client"`)
+Proper separation between UI and logic
+
+This follows modern Next.js best practices.
+
+# 📁 Folder Structure
+
+
+src/
+ ├── app/
+ │    ├── dashboard/
+ │    │    ├── page.tsx
+ │    │    ├── Header.tsx
+ │    ├── layout.tsx
+ │    ├── page.tsx
+ │    ├── globals.css
+ │
+ ├── components/
+ │    ├── DarkModeToggle.tsx
+ │
+ ├── lib/
+ │    ├── taskUtils.ts
+ │
+public/
+ ├── screenshots/
+ │    ├── login.png
+ │    ├── dashboard.png
+ │    ├── dark-mode.png
+ │    ├── create-task.png
+
+
+
+# Author
+
+Jerrin K Joy
