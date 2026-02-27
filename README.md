@@ -32,10 +32,16 @@ http://localhost:3000
 ![Dashboard](public/dashboard.png)
 
 ##  Dark Mode
-![Dark Mode](public/dark-mode.png)
+![Dark Mode](public/darkmode.png)
 
 ##  Create / Edit Task
-![Create Task](public/create-task.png)
+![Create Task](public/createtask.png)
+
+##  Create / Edit Task
+![edit Task](public/edittask.png)
+
+##  Create / Edit Task
+![delete Task](public/deletetask.png)
 
 
 #  Design Decisions
