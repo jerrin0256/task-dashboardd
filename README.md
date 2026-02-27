@@ -2,17 +2,37 @@ This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-
 
 ## Getting Started
 
-First, run the development server:
+This repo contains a simple **Task Management Dashboard** built with Next.js (App Router), TypeScript, Tailwind CSS and shadcn/ui. It demonstrates:
+
+- mock authentication (login flag in `localStorage`)
+- task CRUD (create/edit/delete/change status) with modal forms
+- filter, sort and search
+- **dark mode** toggle stored in `localStorage`
+- a tiny server component (`Header`) alongside client components
+- basic unit tests for task utilities using Jest
+
+To run the app locally, install dependencies then start the dev server:
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+# or substitute yarn/pnpm if you prefer
 ```
+
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the login page. Any username works; once logged in you'll be taken to the dashboard.
+
+The dashboard persists tasks in your browser and will survive reloads.
+
+### Running tests
+
+The repository includes a small Jest setup for unit testing the utility functions. Run:
+
+```bash
+npm run test
+```
+
+and you should see four simple assertions about status changes, filtering, search and sorting.
+
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
